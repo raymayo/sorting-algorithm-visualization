@@ -51,7 +51,7 @@ def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False)
 
 def main_sorting_visualization():
     global start_time
-    array = np.random.randint(1, 100, size=50)
+    array = np.random.randint(1, 100, size=100)
     print("Original array:", array)
 
     fig, ax = plt.subplots()

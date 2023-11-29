@@ -1,8 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+import time
+
+# Global variable for time
+start_time = None
 
 def merge_sort(arr, start, end, fig, ax):
+    global start_time
     if start < end:
         mid = (start + end) // 2
         merge_sort(arr, start, mid, fig, ax)
@@ -37,6 +42,7 @@ def merge(arr, start, mid, end, fig, ax):
         k += 1
 
 def plot_and_pause(arr, start, mid, end, fig, ax):
+    global start_time
     ax.clear()
 
     # Set the figure and axis background color
@@ -64,12 +70,22 @@ def plot_and_pause(arr, start, mid, end, fig, ax):
         plt.title(f'Merge Sort')
 
     ax.bar(range(len(arr)), arr, color=colors, edgecolor=edgecolors)
+
+    # Add timer annotation box to the top right corner inside ax
+    current_time = time.time() - start_time
+    timer_text = f'Time: {current_time:.2f}s'
+    ax.text(0.99, 0.95, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=10)
+
     plt.pause(0.1)
 
 # Example usage
 arr = random.sample(range(1, 101), 100)
 fig, ax = plt.subplots()
 plt.ion()  # Turn on interactive mode for live plotting
+
+# Set the global start time before calling merge_sort
+start_time = time.time()
 merge_sort(arr, 0, len(arr) - 1, fig, ax)
+
 plt.ioff()
 plt.show()
