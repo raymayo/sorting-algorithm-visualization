@@ -45,10 +45,6 @@ def plot_and_pause(arr, start, mid, end):
 
     colors = ['lightblue'] * len(arr)
     
-    # Highlight the first and last elements of each subarray
-    colors[start] = '#FE5D25'
-    colors[end] = '#FE5D25'
-    
     # Highlight all elements inside the merging subarrays in orange
     for i in range(start, end + 1):
         colors[i] = '#F3B51E'
