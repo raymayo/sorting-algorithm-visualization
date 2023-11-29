@@ -70,5 +70,5 @@ def plot_and_pause(arr, start, mid, end):
 arr = random.sample(range(1, 101), 100)
 plt.ion()  # Turn on interactive mode for live plotting
 merge_sort(arr, 0, len(arr) - 1)
-plt.ioff()  # Turn off interactive mode
+plt.ioff()
 plt.show()
