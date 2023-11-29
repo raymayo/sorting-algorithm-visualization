@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import time
-
 
 def quicksort(array, low, high, ax):
     if low < high:
@@ -24,16 +22,8 @@ def partition(array, low, high, ax):
 
     return i + 1
 
-
-
-
-
-
-
-
 def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False):
     ax.clear()
-    # Change the colors of the bars
     if sorting_complete:
         ax.bar(range(len(array)), array, color='lightgreen', edgecolor='black')
     else:
@@ -44,27 +34,27 @@ def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False)
         ax.legend()
     plt.pause(0.15)
 
-
-
-
-
-
-
-
 def main_sorting_visualization():
-    array = np.random.randint(1, 100, size=20)
+    array = np.random.randint(1, 100, size=50)
     print("Original array:", array)
 
-    # Initialize the plot with specific colors
     fig, ax = plt.subplots()
-    fig.set_facecolor('#E0E0E0')  # Set the background color to a light gray
-    ax.set_facecolor('#f0f0f0')   # Set the frame color to a slightly lighter gray
+    fig.set_facecolor('#E0E0E0')
+    ax.set_facecolor('#f0f0f0')
     ax.bar(range(len(array)), array, color='lightblue', edgecolor='black')
-    plt.pause(1)
+    plt.pause(.1)
+
+    # Maximize the window if using Tkinter backend
+    manager = plt.get_current_fig_manager()
+    try:
+        manager.window.state('zoomed')  # for Windows
+    except AttributeError:
+        try:
+            manager.window.attributes('-zoomed', True)  # for Linux
+        except AttributeError:
+            pass  # for MacOS
 
     quicksort(array, 0, len(array) - 1, ax)
-
-    # Update the plot with everything in lightgreen after sorting is complete
     visualize_sorting(array, pivot_index=0, low=0, high=0, ax=ax, sorting_complete=True)
 
     plt.show(block=True)
