@@ -71,4 +71,4 @@ arr = random.sample(range(1, 101), 100)
 plt.ion()  # Turn on interactive mode for live plotting
 merge_sort(arr, 0, len(arr) - 1)
 plt.ioff()  # Turn off interactive mode
-
+plt.show()
