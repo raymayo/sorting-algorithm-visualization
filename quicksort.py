@@ -13,7 +13,7 @@ def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False)
         ax.bar(low, array[low], color='lightgreen', edgecolor='black', label='Less Than Pivot')
         ax.bar(high, array[high], color='#FE5D25', edgecolor='black', label='Greater Than Pivot')
         ax.legend()
-    plt.pause(0.1)
+    plt.pause(0.15)
 
 def quicksort(array, low, high, ax):
     if low < high:
