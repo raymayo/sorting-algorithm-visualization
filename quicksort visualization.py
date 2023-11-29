@@ -9,7 +9,6 @@ def quicksort(array, low, high, ax):
         quicksort(array, low, pivot_index - 1, ax)
         quicksort(array, pivot_index + 1, high, ax)
 
-
 def partition(array, low, high, ax):
     pivot = array[high]
     i = low - 1
