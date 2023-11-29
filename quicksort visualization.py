@@ -1,7 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import time
+
+# Global variable for time
+start_time = None
 
 def quicksort(array, low, high, ax):
+    global start_time
     if low < high:
         pivot_index = partition(array, low, high, ax)
         quicksort(array, low, pivot_index - 1, ax)
@@ -23,7 +28,9 @@ def partition(array, low, high, ax):
     return i + 1
 
 def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False):
+    global start_time
     ax.clear()
+    
     if sorting_complete:
         ax.bar(range(len(array)), array, color='lightgreen', edgecolor='black')
     else:
@@ -31,10 +38,19 @@ def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False)
         ax.bar(pivot_index, array[pivot_index], color='#F3B51E', edgecolor='black', label='Pivot')
         ax.bar(low, array[low], color='lightgreen', edgecolor='black', label='Less Than Pivot')
         ax.bar(high, array[high], color='#FE5D25', edgecolor='black', label='Greater Than Pivot')
-        ax.legend()
-    plt.pause(0.15)
+
+    # Create the legend once outside the loop
+    ax.legend(loc='upper left')
+
+    # Add timer annotation box to the top right corner inside ax
+    current_time = time.time() - start_time
+    timer_text = f'Time: {current_time:.2f}s'
+    ax.text(0.99, 0.95, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=15)
+
+    plt.pause(0.1)
 
 def main_sorting_visualization():
+    global start_time
     array = np.random.randint(1, 100, size=50)
     print("Original array:", array)
 
@@ -54,6 +70,7 @@ def main_sorting_visualization():
         except AttributeError:
             pass  # for MacOS
 
+    start_time = time.time()
     quicksort(array, 0, len(array) - 1, ax)
     visualize_sorting(array, pivot_index=0, low=0, high=0, ax=ax, sorting_complete=True)
 
