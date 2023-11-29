@@ -60,7 +60,7 @@ def plot_and_pause(arr, start, mid, end):
         plt.title(f'Merge Sort')
     
     plt.bar(range(len(arr)), arr, color=colors, edgecolor=edgecolors)
-    plt.pause(0.1)
+    plt.pause(0.15)
 
 # Example usage
 arr = random.sample(range(1, 101), 100)
