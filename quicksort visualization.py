@@ -45,13 +45,13 @@ def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False)
     # Add timer annotation box to the top right corner inside ax
     current_time = time.time() - start_time
     timer_text = f'Time: {current_time:.2f}s'
-    ax.text(0.99, 0.95, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=15)
+    ax.text(0.99, 0.98, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=15)
 
     plt.pause(0.1)
 
 def main_sorting_visualization():
     global start_time
-    array = np.random.randint(1, 100, size=100)
+    array = np.random.randint(1, 100, size=50)
     print("Original array:", array)
 
     fig, ax = plt.subplots()

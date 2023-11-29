@@ -74,12 +74,12 @@ def plot_and_pause(arr, start, mid, end, fig, ax):
     # Add timer annotation box to the top right corner inside ax
     current_time = time.time() - start_time
     timer_text = f'Time: {current_time:.2f}s'
-    ax.text(0.99, 0.95, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=10)
+    ax.text(0.99, 0.98, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=12)
 
     plt.pause(0.1)
 
 # Example usage
-arr = random.sample(range(1, 101), 100)
+arr = random.sample(range(1, 101), 50)
 fig, ax = plt.subplots()
 plt.ion()  # Turn on interactive mode for live plotting
 
