@@ -42,10 +42,10 @@ def visualize_sorting(array, pivot_index, low, high, ax, sorting_complete=False)
     # Create the legend once outside the loop
     ax.legend(loc='upper left')
 
-    # Add timer annotation box to the top right corner inside ax
-    current_time = time.time() - start_time
-    timer_text = f'Time: {current_time:.2f}s'
-    ax.text(0.99, 0.98, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=15)
+    # TODO DISPLAYS TIME
+    # current_time = time.time() - start_time
+    # timer_text = f'Time: {current_time:.2f}s'
+    # ax.text(0.99, 0.98, timer_text, transform=ax.transAxes, ha='right', va='top', bbox=dict(boxstyle='round,pad=0.3', edgecolor='black', facecolor='white'), fontsize=15)
 
     plt.pause(0.1)
 
