@@ -1,13 +1,26 @@
-def quicksort(array):
-    if len(array) <= 1:
-        return array
+# Array example
+ARRAY = [3, 6, 8, 10, 1, 2, 1]
+
+
+# Quicksort function
+def quicksort(arr):
+    # Base case: if the array has 1 or 0 elements, it is already sorted
+    if len(arr) <= 1:
+        return arr
     else:
-        pivot = array[0]
-        smaller_elements = [x for x in array[1:] if x <= pivot]
-        larger_elements = [x for x in array[1:] if x > pivot]
-        return quicksort(smaller_elements) + [pivot] + quicksort(larger_elements)
+        # Choose the first element as the pivot
+        pivot = arr[0]
+
+        # Partition the array into two subarrays:
+        # 1. Elements less than or equal to the pivot
+        # 2. Elements greater than the pivot
+        less = [x for x in arr[1:] if x <= pivot]
+        greater = [x for x in arr[1:] if x > pivot]
+
+        # Recursively apply quicksort on the subarrays
+        return quicksort(less) + [pivot] + quicksort(greater)
+
 
 # Example usage:
-my_list = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-sorted_list = quicksort(my_list)
-print(sorted_list)
+SORTED_LIST = quicksort(ARRAY)
+print(SORTED_LIST)
